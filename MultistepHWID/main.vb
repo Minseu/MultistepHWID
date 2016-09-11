@@ -15,10 +15,9 @@ Public Class main
         Next
         TextBox1.Text = HWID
         ' END PROCESSORID
-        ' Start IP
-        GetIPV4()
-        TextBox2.Text = GetIPV4()
-        ' END IPV4
+        ' Start HDD ID
+        TextBox2.Text = GetDriveSerialNumber()
+        ' END HDD ID
         ' START RM
         TextBox3.Text = My.Computer.Info.TotalPhysicalMemory
         ' END RM
@@ -28,16 +27,6 @@ Public Class main
         Dim eHWID As String = RAM + TextBox1.Text + TextBox3.Text
         TextBox4.Text = getSHA1Hash(eHWID)
     End Sub
-    Private Function GetIPV4() As String
-        GetIPV4 = String.Empty
-        Dim strHostName As String = System.Net.Dns.GetHostName()
-        Dim ipheas As System.Net.IPHostEntry = System.Net.Dns.GetHostEntry(strHostName)
-        For Each ipheal As System.Net.IPAddress In ipheas.AddressList
-            If ipheal.AddressFamily = System.Net.Sockets.AddressFamily.InterNetwork Then
-                GetIPV4 = ipheal.ToString
-            End If
-        Next
-    End Function
     Function getSHA1Hash(ByVal strToHash As String) As String
 
         Dim sha1Obj As New Security.Cryptography.SHA1CryptoServiceProvider
@@ -48,5 +37,19 @@ Public Class main
             strResult += b.ToString("x2")
         Next
         Return strResult
+    End Function
+    Public Function GetDriveSerialNumber() As String
+        Dim DriveSerial As Integer
+        'Create a FileSystemObject object
+        Dim fso As Object = CreateObject("Scripting.FileSystemObject")
+        Dim Drv As Object = fso.GetDrive(fso.GetDriveName(Application.StartupPath))
+        With Drv
+            If .IsReady Then
+                DriveSerial = .SerialNumber
+            Else    '"Drive Not Ready!"
+                DriveSerial = -1
+            End If
+        End With
+        Return DriveSerial.ToString("X2")
     End Function
 End Class

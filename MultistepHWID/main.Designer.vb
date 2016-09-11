@@ -56,9 +56,9 @@ Partial Class main
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 29)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 17)
+        Me.Label2.Size = New System.Drawing.Size(55, 17)
         Me.Label2.TabIndex = 4
-        Me.Label2.Text = "IPv4:"
+        Me.Label2.Text = "HDDID:"
         '
         'Label3
         '
