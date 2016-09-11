@@ -127,7 +127,7 @@ Partial Class main
         Me.MinimizeBox = False
         Me.Name = "main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Multi-Step HWID //DEMO"
+        Me.Text = "Multistep/HWID/DEMO"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

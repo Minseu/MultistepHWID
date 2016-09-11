@@ -22,8 +22,6 @@ Public Class main
         TextBox3.Text = My.Computer.Info.TotalPhysicalMemory
         ' END RM
         ' START FINAL HWID
-        Dim RAM As String = TextBox2.Text
-        RAM = RAM.Replace(".", "")
         Dim eHWID As String = RAM + TextBox1.Text + TextBox3.Text
         TextBox4.Text = getSHA1Hash(eHWID)
     End Sub
